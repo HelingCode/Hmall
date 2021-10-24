@@ -10,3 +10,23 @@ spring:
           uri: https://www.qq.com
           predicates:
             - Query=url,qq
+
+        - id: product_route
+          uri: lb://gulimall-product
+          predicates:
+            - Path=/api/product/**
+          filters:
+            - RewritePath=/api/?(?<segment>.*), /$\{segment}
+
+        - id: admin_route
+          uri: lb://renren-fast
+          predicates:
+            - Path=/api/**
+          filters:
+            - RewritePath=/api/?(?<segment>.*), /renren-fast/$\{segment}
+
+
+
+## 前端项目，/api
+## http://localhost:88/api/catcha.jpg  ==> http://renren-fast:8080/api/catcha.jpg 但是真实的访问应该是 localhost:8080/renren-fast/capcha.jpg
+## 所以应该使用路径重写
