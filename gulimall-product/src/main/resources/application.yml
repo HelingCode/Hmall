@@ -11,15 +11,35 @@ spring:
     nacos:
       discovery:
         server-addr: 127.0.0.1:8848
+#    alicloud:
+#      access-key: LTAI5tBB3kqZ4bvgLPVQx1SV
+#      secret-key: AuUa3CvhGu9h0ZRS3KUtjZ0qkvO5Bt
+#      oss:
+#        endpoint: oss-cn-hangzhou.aliyuncs.com
+#        bucket: gulimall-hello
 
 mybatis-plus:
   mapper-locations: classpath:/mapper/**/*.xml
   global-config:
     db-config:
       id-type: auto
+      logic-delete-value: 1 # 已删除
+      logic-not-delete-value: 0 # 未删除
   # 日志
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
 
+
 server:
   port: 10000
+
+
+logging:
+  level:
+    com.atguigu.gulimall: debug
+alibaba:
+  cloud:
+    access-key: LTAI5tBB3kqZ4bvgLPVQx1SV
+    secret-key: AuUa3CvhGu9h0ZRS3KUtjZ0qkvO5Bt
+    oss:
+      endpoint: oss-cn-hangzhou.aliyuncs.com

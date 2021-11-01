@@ -1,27 +1,16 @@
-package com.atguigu.gulimall.product;
+package com.atguigu.gulimall.thirdparty;
 
-import com.aliyun.oss.OSS;
 import com.aliyun.oss.OSSClient;
-import com.aliyun.oss.OSSClientBuilder;
-import com.atguigu.gulimall.product.entity.BrandEntity;
-import com.atguigu.gulimall.product.service.BrandService;
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import javax.annotation.Resource;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
-import java.util.List;
 
 @SpringBootTest
-class GulimallProductApplicationTests {
-
-    @Autowired
-    BrandService brandService;
-
+class GulimallThirdPartyApplicationTests {
 
     @Autowired
     OSSClient ossClient;
@@ -40,7 +29,7 @@ class GulimallProductApplicationTests {
         // 填写本地文件的完整路径。如果未指定本地路径，则默认从示例程序所属项目对应本地路径中上传文件流。
         InputStream inputStream = new FileInputStream("C:\\Users\\Heling\\Pictures\\Camera Roll\\e86f5125650d9d8a0f52e03a3e6be5c2.jpeg");
         // 依次填写Bucket名称（例如examplebucket）和Object完整路径（例如exampledir/exampleobject.txt）。Object完整路径中不能包含Bucket名称。
-        ossClient.putObject("gulimall-heling", "e86f5125650d9d8a0f52e03a3e6be5c2.jpeg", inputStream);
+        ossClient.putObject("gulimall-heling", "11111.jpeg", inputStream);
 
         // 关闭OSSClient。
         ossClient.shutdown();
@@ -50,20 +39,6 @@ class GulimallProductApplicationTests {
 
     @Test
     void contextLoads() {
-
-        BrandEntity brandEntity = new BrandEntity();
-//        brandEntity.setDescript("小米手机");
-//        brandEntity.setName("小米11");
-//        brandService.save(brandEntity);
-//        brandEntity.setBrandId(1L);
-//        brandEntity.setName("小米11至尊纪念版");
-//
-//        brandService.updateById(brandEntity);
-
-        List<BrandEntity> list = brandService.list(new QueryWrapper<BrandEntity>().eq("brand_id", 1L));
-        list.forEach((item) ->{
-            System.out.println(item);
-        });
     }
 
 }
