@@ -38,7 +38,7 @@ public class AttrVo {
      */
     private Long enable;
     /**
-     * 所属分类
+     * 所属分类id
      */
     private Long catelogId;
     /**
