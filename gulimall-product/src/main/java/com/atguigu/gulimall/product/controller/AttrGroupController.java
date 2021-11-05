@@ -39,10 +39,24 @@ public class AttrGroupController {
     private AttrService attrService;
 
     ///product/attrgroup/{attrgroupId}/attr/relation
+
+    /**
+     * 查询分组关联的所有属性
+     * @param attrgroupId
+     * @return
+     */
     @GetMapping("/{attrgroupId}/attr/relation")
     public R attrRelation(@PathVariable("attrgroupId") Long attrgroupId){
         List<AttrEntity> entities = attrService.getRelationAttr(attrgroupId);
         return R.ok().put("data",entities);
+    }
+
+    ///product/attrgroup/{attrgroupId}/noattr/relation
+    @GetMapping("/{attrgroupId}/noattr/relation")
+    public R attrNoRelation(@PathVariable("attrgroupId") Long attrgroupId,
+                            @RequestParam Map<String,Object> params){
+        PageUtils page = attrService.getNoRelationAttr(params,attrgroupId);
+        return R.ok().put("page",page);
     }
 
     /**
