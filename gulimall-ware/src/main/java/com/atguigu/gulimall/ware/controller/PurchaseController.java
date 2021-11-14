@@ -7,6 +7,7 @@ import java.util.Map;
 
 
 import com.atguigu.gulimall.ware.Vo.MergeVo;
+import com.atguigu.gulimall.ware.Vo.PurchaseDoneVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -62,6 +63,15 @@ public class PurchaseController {
         PageUtils page = purchaseService.queryPageUnreceivePurchase(params);
 
         return R.ok().put("page", page);
+    }
+
+    ///ware/purchase/done
+    @PostMapping("/done")
+    public R finish(@RequestBody PurchaseDoneVo doneVo){
+
+        purchaseService.done(doneVo);
+
+        return R.ok();
     }
 
     /**
