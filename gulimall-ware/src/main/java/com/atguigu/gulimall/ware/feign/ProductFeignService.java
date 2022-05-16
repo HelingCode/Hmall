@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * @auther heling
  * @date 2021/11/14
  */
-@FeignClient("gulimall_product")
+@FeignClient("gulimall-product")
 public interface ProductFeignService {
 
     /**
